@@ -1,0 +1,43 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/wyulib?&characterEncoding=UTF-8&useSSL=false&serverTimezone=GMT%2B8
+    username: zwh
+    password: 182182
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss    #或java.text.SimpleDateFormat
+    time-zone: GMT+8
+  devtools:
+    restart:
+      additional-paths: classpath:src/main/java
+  servlet:
+    multipart:
+      max-file-size: 4MB
+server:
+  port: 80
+  servlet:
+    session:
+      timeout: 3600s
+
+
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.wyu.**.entity
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  config: classpath:logback.xml
+  level:
+    mapper: debug
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+
+wx:
+  APPID: wxeb18fd1869e183e6
+  SECRET: dc8b744834f74d7bee9f75bd9709dd67
+  Web_access_tokenhttps:  https://api.weixin.qq.com/sns/jscode2session?appid=%s&secret=%s&js_code=%s&grant_type=authorization_code

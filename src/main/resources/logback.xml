@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+    <property name="ApplicationName" value="waterManager"/>
+    <contextName>${ApplicationName}</contextName>
+    <property scope="context" name="logs.dir" value="./log"/>
+    <appender name="StdoutLogger" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>[%-5p] %d{yyyy-MM-dd HH:mm:ss:SSS} %logger \(%file:%line\) - %message%n</pattern>
+            <charset>UTF-8</charset>
+        </encoder>
+    </appender>
+
+    <appender name="AllLogger" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${logs.dir}/AllLog.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <maxFileSize>50MB</maxFileSize>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%-5p] %d{yyyy-MM-dd HH:mm:ss:SSS} %c \(%file:%line\) - %message%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>debug</level>
+        </filter>
+    </appender>
+
+    <appender name="WarnLogger" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${logs.dir}/WarnLog.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <maxFileSize>50MB</maxFileSize>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%-5p] %d{yyyy-MM-dd HH:mm:ss:SSS} %logger \(%file:%line\) - %message%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>WARN</level>
+        </filter>
+    </appender>
+
+    <appender name="SqlLogLogger" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${logs.dir}/SqlLog.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+            <maxFileSize>50MB</maxFileSize>
+            <totalSizeCap>1GB</totalSizeCap>
+        </rollingPolicy>
+        <encoder>
+            <pattern>[%-5p] %d{yyyy-MM-dd HH:mm:ss:SSS} %c \(%file:%line\) - %message%n</pattern>
+        </encoder>
+        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+            <level>debug</level>
+        </filter>
+    </appender>
+
+    <!-- <logger name="com.lckj" level="DEBUG">
+        <appender-ref ref="AllLogger"/>
+        <appender-ref ref="StdoutLogger"/>
+    </logger> -->
+    <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"
+            level="DEBUG" additivity="false">
+        <appender-ref ref="AllLogger"/>
+        <appender-ref ref="StdoutLogger"/>
+    </logger>
+    <logger name="org.springframework.web.servlet.mvc.method.annotation.RequestResponseBodyMethodProcessor"
+            level="DEBUG" additivity="false">
+        <appender-ref ref="AllLogger"/>
+        <appender-ref ref="StdoutLogger"/>
+    </logger>
+
+    <logger name="druid.sql.Statement" level="DEBUG" additivity="false">
+        <appender-ref ref="AllLogger"/>
+        <appender-ref ref="StdoutLogger"/>
+        <appender-ref ref="SqlLogLogger"/>
+    </logger>
+
+    <root level="INFO">
+        <appender-ref ref="AllLogger"/>
+        <appender-ref ref="StdoutLogger"/>
+        <appender-ref ref="WarnLogger"/>
+    </root>
+</configuration>

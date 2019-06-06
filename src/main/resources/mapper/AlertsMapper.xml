@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wyu.infolib.dao.AlertsMapper">
+    <resultMap id="BaseResultMap" type="com.wyu.infolib.entity.Alerts">
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="post_id" property="postId" jdbcType="INTEGER"/>
+        <result column="ask_id" property="askId" jdbcType="INTEGER"/>
+        <result column="reply_id" property="replyId" jdbcType="INTEGER"/>
+        <result column="alert_type" property="alertType" jdbcType="INTEGER"/>
+        <result column="is_read" property="isRead" jdbcType="INTEGER"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="read_time" property="readTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, post_id, ask_id, reply_id, alert_type, is_read, create_time, read_time
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from alerts
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from alerts
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+    <insert id="insert" parameterType="com.wyu.infolib.entity.Alerts">
+    insert into alerts (id, post_id, ask_id, reply_id,
+      alert_type, is_read, create_time, 
+      read_time)
+    values (#{id,jdbcType=INTEGER}, #{postId,jdbcType=INTEGER}, #{askId,jdbcType=INTEGER}, #{replyId,jdbcType=INTEGER},
+      #{alertType,jdbcType=INTEGER}, #{isRead,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{readTime,jdbcType=TIMESTAMP})
+  </insert>
+    <insert id="insertSelective" parameterType="com.wyu.infolib.entity.Alerts">
+        insert into alerts
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="postId != null">
+                post_id,
+            </if>
+            <if test="askId != null">
+                ask_id,
+            </if>
+            <if test="replyId != null">
+                reply_id,
+            </if>
+            <if test="alertType != null">
+                alert_type,
+            </if>
+            <if test="isRead != null">
+                is_read,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="readTime != null">
+                read_time,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=INTEGER},
+            </if>
+            <if test="postId != null">
+                #{postId,jdbcType=INTEGER},
+            </if>
+            <if test="askId != null">
+                #{askId,jdbcType=INTEGER},
+            </if>
+            <if test="replyId != null">
+                #{replyId,jdbcType=INTEGER},
+            </if>
+            <if test="alertType != null">
+                #{alertType,jdbcType=INTEGER},
+            </if>
+            <if test="isRead != null">
+                #{isRead,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="readTime != null">
+                #{readTime,jdbcType=TIMESTAMP},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.wyu.infolib.entity.Alerts">
+        update alerts
+        <set>
+            <if test="postId != null">
+                post_id = #{postId,jdbcType=INTEGER},
+            </if>
+            <if test="askId != null">
+                ask_id = #{askId,jdbcType=INTEGER},
+            </if>
+            <if test="replyId != null">
+                reply_id = #{replyId,jdbcType=INTEGER},
+            </if>
+            <if test="alertType != null">
+                alert_type = #{alertType,jdbcType=INTEGER},
+            </if>
+            <if test="isRead != null">
+                is_read = #{isRead,jdbcType=INTEGER},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="readTime != null">
+                read_time = #{readTime,jdbcType=TIMESTAMP},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.wyu.infolib.entity.Alerts">
+    update alerts
+    set post_id = #{postId,jdbcType=INTEGER},
+      ask_id = #{askId,jdbcType=INTEGER},
+      reply_id = #{replyId,jdbcType=INTEGER},
+      alert_type = #{alertType,jdbcType=INTEGER},
+      is_read = #{isRead,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      read_time = #{readTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+    <select id="getList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from alerts
+        where ask_id = #{askUserId,jdbcType=INTEGER} and is_read = 0
+        order by create_time DESC
+    </select>
+    <select id="findByAskIdR" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from alerts
+        where post_id = #{askId,jdbcType=INTEGER} AND is_read = 0
+        AND alert_type = #{type,jdbcType=INTEGER}
+        order by create_time DESC
+    </select>
+</mapper>

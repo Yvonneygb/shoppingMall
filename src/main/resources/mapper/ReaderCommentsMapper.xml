@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.wyu.infolib.dao.ReaderCommentsMapper" >
+  <resultMap id="BaseResultMap" type="com.wyu.infolib.entity.ReaderComments" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="use_id" property="useId" jdbcType="INTEGER" />
+    <result column="msg_theme" property="msgTheme" jdbcType="VARCHAR" />
+    <result column="msg_submit_content" property="msgSubmitContent" jdbcType="VARCHAR" />
+    <result column="msg_img_urls" property="msgImgUrls" jdbcType="VARCHAR" />
+    <result column="msg_submit" property="msgSubmit" jdbcType="VARCHAR" />
+    <result column="msg_submit_avatar" property="msgSubmitAvatar" jdbcType="VARCHAR" />
+    <result column="msg_submit_id" property="msgSubmitId" jdbcType="INTEGER" />
+    <result column="msg_submit_time" property="msgSubmitTime" jdbcType="TIMESTAMP" />
+    <result column="msg_reply_content" property="msgReplyContent" jdbcType="VARCHAR" />
+    <result column="msg_reply" property="msgReply" jdbcType="VARCHAR" />
+    <result column="msg_reply_avatar" property="msgReplyAvatar" jdbcType="VARCHAR" />
+    <result column="msg_reply_id" property="msgReplyId" jdbcType="INTEGER" />
+    <result column="msg_reply_time" property="msgReplyTime" jdbcType="TIMESTAMP" />
+    <result column="msg_show" property="msgShow" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, use_id, msg_theme, msg_submit_content, msg_submit, msg_img_urls, msg_submit_avatar, msg_submit_id,
+    msg_submit_time, msg_reply_content, msg_reply, msg_reply_avatar, msg_reply_id, msg_reply_time, 
+    msg_show
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from reader_comments
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from reader_comments
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.wyu.infolib.entity.ReaderComments" >
+    insert into reader_comments (id, use_id, msg_theme, 
+      msg_submit_content, msg_submit, msg_img_urls, msg_submit_avatar,
+      msg_submit_id, msg_submit_time, msg_reply_content, 
+      msg_reply, msg_reply_avatar, msg_reply_id, 
+      msg_reply_time, msg_show)
+    values (#{id,jdbcType=INTEGER}, #{useId,jdbcType=INTEGER}, #{msgTheme,jdbcType=VARCHAR}, 
+      #{msgSubmitContent,jdbcType=VARCHAR}, #{msgSubmit,jdbcType=VARCHAR}, #{msgSubmitAvatar,jdbcType=VARCHAR}, 
+      #{msgSubmitId,jdbcType=INTEGER}, #{msgSubmitTime,jdbcType=TIMESTAMP}, #{msgReplyContent,jdbcType=VARCHAR}, 
+      #{msgReply,jdbcType=VARCHAR}, #{msgReplyAvatar,jdbcType=VARCHAR}, #{msgReplyId,jdbcType=INTEGER}, 
+      #{msgReplyTime,jdbcType=TIMESTAMP}, #{msgShow,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.wyu.infolib.entity.ReaderComments"
+          useGeneratedKeys="true" keyProperty="id" keyColumn="id">
+    insert into reader_comments
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="useId != null" >
+        use_id,
+      </if>
+      <if test="msgTheme != null" >
+        msg_theme,
+      </if>
+      <if test="msgSubmitContent != null" >
+        msg_submit_content,
+      </if>
+      <if test="msgImgUrls != null" >
+        msg_img_urls,
+      </if>
+      <if test="msgSubmit != null" >
+        msg_submit,
+      </if>
+      <if test="msgSubmitAvatar != null" >
+        msg_submit_avatar,
+      </if>
+      <if test="msgSubmitId != null" >
+        msg_submit_id,
+      </if>
+      <if test="msgSubmitTime != null" >
+        msg_submit_time,
+      </if>
+      <if test="msgReplyContent != null" >
+        msg_reply_content,
+      </if>
+      <if test="msgReply != null" >
+        msg_reply,
+      </if>
+      <if test="msgReplyAvatar != null" >
+        msg_reply_avatar,
+      </if>
+      <if test="msgReplyId != null" >
+        msg_reply_id,
+      </if>
+      <if test="msgReplyTime != null" >
+        msg_reply_time,
+      </if>
+      <if test="msgShow != null" >
+        msg_show,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="useId != null" >
+        #{useId,jdbcType=INTEGER},
+      </if>
+      <if test="msgTheme != null" >
+        #{msgTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="msgSubmitContent != null" >
+        #{msgSubmitContent,jdbcType=VARCHAR},
+      </if>
+      <if test="msgSubmit != null" >
+        #{msgSubmit,jdbcType=VARCHAR},
+      </if>
+      <if test="msgSubmitAvatar != null" >
+        #{msgSubmitAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="msgSubmitId != null" >
+        #{msgSubmitId,jdbcType=INTEGER},
+      </if>
+      <if test="msgSubmitTime != null" >
+        #{msgSubmitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="msgReplyContent != null" >
+        #{msgReplyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="msgReply != null" >
+        #{msgReply,jdbcType=VARCHAR},
+      </if>
+      <if test="msgReplyAvatar != null" >
+        #{msgReplyAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="msgReplyId != null" >
+        #{msgReplyId,jdbcType=INTEGER},
+      </if>
+      <if test="msgReplyTime != null" >
+        #{msgReplyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="msgShow != null" >
+        #{msgShow,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.wyu.infolib.entity.ReaderComments" >
+    update reader_comments
+    <set >
+      <if test="useId != null" >
+        use_id = #{useId,jdbcType=INTEGER},
+      </if>
+      <if test="msgTheme != null" >
+        msg_theme = #{msgTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="msgSubmitContent != null" >
+        msg_submit_content = #{msgSubmitContent,jdbcType=VARCHAR},
+      </if>
+      <if test="msgImgUrls != null" >
+        msg_img_urls = #{msgImgUrls,jdbcType=VARCHAR},
+      </if>
+      <if test="msgSubmit != null" >
+        msg_submit = #{msgSubmit,jdbcType=VARCHAR},
+      </if>
+      <if test="msgSubmitAvatar != null" >
+        msg_submit_avatar = #{msgSubmitAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="msgSubmitId != null" >
+        msg_submit_id = #{msgSubmitId,jdbcType=INTEGER},
+      </if>
+      <if test="msgSubmitTime != null" >
+        msg_submit_time = #{msgSubmitTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="msgReplyContent != null" >
+        msg_reply_content = #{msgReplyContent,jdbcType=VARCHAR},
+      </if>
+      <if test="msgReply != null" >
+        msg_reply = #{msgReply,jdbcType=VARCHAR},
+      </if>
+      <if test="msgReplyAvatar != null" >
+        msg_reply_avatar = #{msgReplyAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="msgReplyId != null" >
+        msg_reply_id = #{msgReplyId,jdbcType=INTEGER},
+      </if>
+      <if test="msgReplyTime != null" >
+        msg_reply_time = #{msgReplyTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="msgShow != null" >
+        msg_show = #{msgShow,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.wyu.infolib.entity.ReaderComments" >
+    update reader_comments
+    set use_id = #{useId,jdbcType=INTEGER},
+      msg_theme = #{msgTheme,jdbcType=VARCHAR},
+      msg_submit_content = #{msgSubmitContent,jdbcType=VARCHAR},
+      msg_img_urls = #{msgImgUrls,jdbcType=VARCHAR},
+      msg_submit = #{msgSubmit,jdbcType=VARCHAR},
+      msg_submit_avatar = #{msgSubmitAvatar,jdbcType=VARCHAR},
+      msg_submit_id = #{msgSubmitId,jdbcType=INTEGER},
+      msg_submit_time = #{msgSubmitTime,jdbcType=TIMESTAMP},
+      msg_reply_content = #{msgReplyContent,jdbcType=VARCHAR},
+      msg_reply = #{msgReply,jdbcType=VARCHAR},
+      msg_reply_avatar = #{msgReplyAvatar,jdbcType=VARCHAR},
+      msg_reply_id = #{msgReplyId,jdbcType=INTEGER},
+      msg_reply_time = #{msgReplyTime,jdbcType=TIMESTAMP},
+      msg_show = #{msgShow,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="getListPage" resultMap="BaseResultMap" parameterType="com.wyu.infolib.common.entity.ReaderAskPageVO">
+    select
+    <include refid="Base_Column_List" />
+    from reader_comments
+    <where>
+      1 = 1
+      <if test="isShow != -2">
+        and msg_show = #{isShow,jdbcType=INTEGER}
+      </if>
+      <if test="isReply == 0">
+        and msg_reply_id is null
+      </if>
+      <if test="isReply == 1">
+        and msg_reply_id is not null
+      </if>
+      <if test="replyId != -1">
+        and msg_reply_id = #{replyId,jdbcType=INTEGER}
+      </if>
+      <if test="submitId != -1">
+        and msg_submit_id = #{submitId,jdbcType=INTEGER}
+      </if>
+      <if test="theme != null and theme != '' ">
+        and msg_theme like '%' #{theme,jdbcType=VARCHAR} '%'
+      </if>
+    </where>
+    order by msg_submit_time DESC
+  </select>
+  <select id="getMyAskPage" resultMap="BaseResultMap">
+    select * from wyulib.reader_comments
+    where 1=1
+    <if test="userId != null and userId != ''">
+      and msg_submit_id = #{userId}
+    </if>
+      and msg_show = 1
+    order by msg_submit_time DESC
+  </select>
+  <select id="getKeyPage" resultMap="BaseResultMap">
+    select * from reader_comments
+    where 1 = 1
+    <if test="keyWord != '' and keyWord != null">
+      and msg_submit_content like '%' #{keyWord,jdbcType=VARCHAR} '%'
+    </if>
+    and msg_show = 1
+    order by msg_submit_time desc
+  </select>
+</mapper>
