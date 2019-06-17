@@ -1,6 +1,8 @@
 package com.wyu.infolib.service.impl;
 
+import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.wyu.infolib.common.entity.PageVO;
 import com.wyu.infolib.dao.UserInfoMapper;
 import com.wyu.infolib.entity.UserInfo;
@@ -53,6 +55,18 @@ public class UserServiceImpl implements UserService {
     public List<UserInfo> findListHasAccount(int flag, PageVO pageVO) {
         PageHelper.startPage(pageVO.getPageNum(),pageVO.getPageSize(),false,false,false);
         return userInfoMapper.findListHasAccount(flag);
+    }
+
+    @Override
+    public PageVO findListHasAccountPage(int flag, PageVO pageVO) {
+        PageHelper.startPage(pageVO.getPageNum(), pageVO.getPageSize());
+        List<UserInfo> list = userInfoMapper.findListHasAccount(flag);
+        PageInfo<UserInfo> pageInfo = new PageInfo<>( list);
+        PageHelper.clearPage();
+        PageVO vo = new PageVO();
+        vo.setRows(pageInfo.getList());
+        vo.setTotal(pageInfo.getTotal());
+        return vo;
     }
 
     @Override

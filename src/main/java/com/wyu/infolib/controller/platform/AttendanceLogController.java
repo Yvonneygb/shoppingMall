@@ -33,8 +33,8 @@ public class AttendanceLogController {
     public ResponseVO logList(PageVO pageVO){
         ResponseVO responseVO = new ResponseVO();
         try {
-            List<Attendance> list = attendanceService.logList(pageVO);
-            responseVO.setData(list);
+            PageVO vo = attendanceService.logListPage(pageVO);
+            responseVO.setData(vo);
             responseVO.setEmsg("获取成功");
         } catch (Exception e) {
             e.printStackTrace();

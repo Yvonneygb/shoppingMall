@@ -27,4 +27,6 @@ public interface AttendanceDeviceService {
     AttendanceDevice findById(Integer id);
     //拿到设备集合
     List<AttendanceDevice> findList();
+
+    PageVO findListPage(PageVO pageVO);
 }

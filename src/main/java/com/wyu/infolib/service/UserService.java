@@ -1,5 +1,6 @@
 package com.wyu.infolib.service;
 
+import com.github.pagehelper.Page;
 import com.wyu.infolib.common.entity.PageVO;
 import com.wyu.infolib.entity.UserInfo;
 
@@ -25,6 +26,8 @@ public interface UserService {
     int save(UserInfo user);
     //找到有账号的用户集合 1有，0无
     List<UserInfo> findListHasAccount(int flag, PageVO pageVO);
+
+    PageVO findListHasAccountPage(int flag, PageVO pageVO);
     //批量删除用户
     void deleteUsers(String userIds);
     //更新用户信息

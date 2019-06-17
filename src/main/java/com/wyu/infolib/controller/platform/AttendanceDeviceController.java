@@ -33,10 +33,9 @@ public class AttendanceDeviceController {
     @ResponseBody
     public ResponseVO deviceList(PageVO pageVO){
         ResponseVO responseVO = new ResponseVO();
-        List<AttendanceDevice> list = null;
         try {
-            list = attendanceDeviceService.findList(pageVO);
-            responseVO.setData(list);
+            PageVO vo = attendanceDeviceService.findListPage(pageVO);
+            responseVO.setData(vo);
             responseVO.setEmsg("获取成功");
         } catch (Exception e) {
             e.printStackTrace();

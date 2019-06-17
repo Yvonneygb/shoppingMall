@@ -48,9 +48,8 @@ public class AttendanceController {
     @ResponseBody
     public ResponseVO userList(PageVO pageVO) {
         ResponseVO responseVO = new ResponseVO();
-        List<UserInfo> list = userService.findListHasAccount(1, pageVO);//1有账号
-        responseVO.setEmsg("获取成功");
-        responseVO.setData(list);
+        PageVO page = userService.findListHasAccountPage(1, pageVO);//1有账号
+        responseVO.setData(page);
         return responseVO;
     }
 

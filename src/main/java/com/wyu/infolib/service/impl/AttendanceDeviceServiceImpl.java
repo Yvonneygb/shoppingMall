@@ -1,6 +1,7 @@
 package com.wyu.infolib.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.wyu.infolib.common.entity.PageVO;
 import com.wyu.infolib.dao.AttendanceDeviceMapper;
 import com.wyu.infolib.entity.AttendanceDevice;
@@ -68,5 +69,17 @@ public class AttendanceDeviceServiceImpl implements AttendanceDeviceService {
     @Override
     public List<AttendanceDevice> findList() {
         return attendanceDeviceMapper.findList();
+    }
+
+    @Override
+    public PageVO findListPage(PageVO pageVO) {
+        PageHelper.startPage(pageVO.getPageNum(), pageVO.getPageSize());
+        List<AttendanceDevice> list = attendanceDeviceMapper.findList();
+        PageInfo<AttendanceDevice> pageInfo = new PageInfo<>( list);
+        PageHelper.clearPage();
+        PageVO vo = new PageVO();
+        vo.setRows(pageInfo.getList());
+        vo.setTotal(pageInfo.getTotal());
+        return vo;
     }
 }

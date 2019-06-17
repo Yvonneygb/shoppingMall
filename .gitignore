@@ -31,8 +31,7 @@ HELP.md
 ### Example user template
 
 # IntelliJ project files
-.idea
-*.iml
+
 out
 gen
 
@@ -41,3 +40,5 @@ log
 .mvn
 mvnw
 mvnw.cmd
+src/main/resources/static/
+src/main/resources/templates/

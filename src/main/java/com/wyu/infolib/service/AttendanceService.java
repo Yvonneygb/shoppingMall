@@ -26,4 +26,6 @@ public interface AttendanceService {
     Attendance findLastLog(Integer id, int userId);
     //找到时间段打卡日志
     List<Attendance> findLogs(Date startDate, Date endDate, int userId);
+
+    PageVO logListPage(PageVO pageVO);
 }

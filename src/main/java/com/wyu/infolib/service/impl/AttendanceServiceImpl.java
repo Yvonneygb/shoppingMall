@@ -1,6 +1,7 @@
 package com.wyu.infolib.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.wyu.infolib.common.entity.PageVO;
 import com.wyu.infolib.dao.AttendanceMapper;
 import com.wyu.infolib.entity.Attendance;
@@ -61,5 +62,17 @@ public class AttendanceServiceImpl implements AttendanceService {
     @Override
     public List<Attendance> findLogs(Date startDate, Date endDate, int userId) {
         return attendanceMapper.findLogs(startDate, endDate, userId);
+    }
+
+    @Override
+    public PageVO logListPage(PageVO pageVO) {
+        PageHelper.startPage(pageVO.getPageNum(), pageVO.getPageSize());
+        List<Attendance> list = attendanceMapper.logList();
+        PageInfo<Attendance> pageInfo = new PageInfo<>( list);
+        PageHelper.clearPage();
+        PageVO vo = new PageVO();
+        vo.setRows(pageInfo.getList());
+        vo.setTotal(pageInfo.getTotal());
+        return vo;
     }
 }
