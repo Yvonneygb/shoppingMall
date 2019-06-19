@@ -33,8 +33,8 @@ public class CommunicationController {
     public ResponseVO communicationList(PageVO pageVO){
         ResponseVO responseVO = new ResponseVO();
         try {
-            List<Communication> list = communicationService.communicationList(pageVO);
-            responseVO.setData(list);
+            PageVO vo = communicationService.communicationListPage(pageVO);
+            responseVO.setData(vo);
             responseVO.setEmsg("获取成功");
         } catch (Exception e) {
             e.printStackTrace();

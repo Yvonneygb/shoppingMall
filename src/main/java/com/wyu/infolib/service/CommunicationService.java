@@ -29,4 +29,6 @@ public interface CommunicationService {
     List<Communication> getMyPostPage(PageVO pageVO, int userId);
     //查找关键字
     List<Communication> getKeyPage(PageVO pageVO, String keyWord);
+    //分页总条数
+    PageVO communicationListPage(PageVO pageVO);
 }

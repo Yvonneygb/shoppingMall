@@ -1,9 +1,11 @@
 package com.wyu.infolib.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.wyu.infolib.common.entity.PageVO;
 import com.wyu.infolib.dao.CommunicationMapper;
 import com.wyu.infolib.dao.ReplyMapper;
+import com.wyu.infolib.entity.Attendance;
 import com.wyu.infolib.entity.Communication;
 import com.wyu.infolib.entity.Reply;
 import com.wyu.infolib.service.CommunicationService;
@@ -86,5 +88,19 @@ public class CommunicationServiceImpl implements CommunicationService {
         PageHelper.startPage(pageVO.getPageNum(), pageVO.getPageSize(), false,false,false);
         List<Communication> list = communicationMapper.getKeyPage(keyWord);
         return list;
+    }
+
+    @Override
+    public PageVO communicationListPage(PageVO pageVO) {
+        PageHelper.startPage(pageVO.getPageNum(), pageVO.getPageSize());
+        List<Communication> list = communicationMapper.communicationList(-1);
+        PageInfo<Communication> pageInfo = new PageInfo<>( list);
+        PageHelper.clearPage();
+        PageVO vo = new PageVO();
+        vo.setPageSize(pageVO.getPageSize());
+        vo.setPageNum(pageVO.getPageNum());
+        vo.setRows(pageInfo.getList());
+        vo.setTotal(pageInfo.getTotal());
+        return vo;
     }
 }

@@ -73,4 +73,8 @@ public class MD5Util {
         return md5Hex(password + Salt).equals(String.valueOf(cs1));
     }
 
+    public static void main(String[] args){
+        System.out.println(getSaltMD5("123"));
+    }
+
 }

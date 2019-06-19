@@ -1,9 +1,11 @@
 package com.wyu.infolib.service.impl;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.wyu.infolib.common.entity.PageVO;
 import com.wyu.infolib.common.entity.ReaderAskPageVO;
 import com.wyu.infolib.dao.ReaderCommentsMapper;
+import com.wyu.infolib.entity.Attendance;
 import com.wyu.infolib.entity.ReaderComments;
 import com.wyu.infolib.service.ReaderService;
 import org.springframework.stereotype.Service;
@@ -66,6 +68,20 @@ public class ReaderServiceImpl implements ReaderService {
         PageHelper.startPage(pageVO.getPageNum(),pageVO.getPageSize(),false,false,false);
         List<ReaderComments> list = readerCommentsMapper.getKeyPage(keyWord);
         return list;
+    }
+
+    @Override
+    public PageVO getListPageVO(ReaderAskPageVO pageVO) {
+        PageHelper.startPage(pageVO.getPageNum(), pageVO.getPageSize());
+        List<ReaderComments> list = readerCommentsMapper.getListPage(pageVO);;
+        PageInfo<ReaderComments> pageInfo = new PageInfo<>( list);
+        PageHelper.clearPage();
+        PageVO vo = new PageVO();
+        vo.setPageSize(pageVO.getPageSize());
+        vo.setPageNum(pageVO.getPageNum());
+        vo.setRows(pageInfo.getList());
+        vo.setTotal(pageInfo.getTotal());
+        return vo;
     }
 
 }

@@ -14,7 +14,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 /**
- * @Description
+ * @Description  普通用户
  * @Author RLinux
  * @Email RLinux_zwh@163.com
  * @Since 2019/4/2 10:40
@@ -32,9 +32,9 @@ public class UserController {
     public ResponseVO userList(PageVO pageVO){
         ResponseVO responseVO = new ResponseVO();
         try {
-            List<UserInfo> list = userService.findListHasAccount(0, pageVO);
+            PageVO vo = userService.findListHasAccountPage(0, pageVO);
             responseVO.setEmsg("获取成功");
-            responseVO.setData(list);
+            responseVO.setData(vo);
         } catch (Exception e) {
             e.printStackTrace();
         }

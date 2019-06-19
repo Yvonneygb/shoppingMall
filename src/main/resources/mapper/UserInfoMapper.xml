@@ -30,6 +30,7 @@
     <result column="user_college" property="userCollege" jdbcType="VARCHAR" />
     <result column="user_id_card" property="userIdCard" jdbcType="VARCHAR" />
     <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="user_type" property="userType" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
     id, nickname, avatar_url, user_account, user_password, user_name, sex, user_college, 
@@ -236,7 +237,7 @@
   <select id="findByAccount" parameterType="String" resultMap="SomeResultMap">
     select
     id, nickname, avatar_url, user_account, user_password, user_name, sex, user_college,
-    user_id_card, telephone, openid
+    user_id_card, telephone, openid, user_type
     from user_info
     where user_account = #{account,jdbcType=VARCHAR}
   </select>

@@ -40,5 +40,3 @@ log
 .mvn
 mvnw
 mvnw.cmd
-src/main/resources/static/
-src/main/resources/templates/

@@ -28,4 +28,6 @@ public interface ReaderService {
     List<ReaderComments> getMyAskPage(PageVO pageVO, int userId);
     //搜索
     List<ReaderComments> getKeyPage(PageVO pageVO, String keyWord);
+    //分页加总条数
+    PageVO getListPageVO(ReaderAskPageVO readerAskPageVO);
 }

@@ -71,6 +71,8 @@ public class AttendanceServiceImpl implements AttendanceService {
         PageInfo<Attendance> pageInfo = new PageInfo<>( list);
         PageHelper.clearPage();
         PageVO vo = new PageVO();
+        vo.setPageSize(pageVO.getPageSize());
+        vo.setPageNum(pageVO.getPageNum());
         vo.setRows(pageInfo.getList());
         vo.setTotal(pageInfo.getTotal());
         return vo;

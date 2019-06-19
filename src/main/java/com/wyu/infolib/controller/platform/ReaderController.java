@@ -1,5 +1,6 @@
 package com.wyu.infolib.controller.platform;
 
+import com.wyu.infolib.common.entity.PageVO;
 import com.wyu.infolib.common.entity.ReaderAskPageVO;
 import com.wyu.infolib.common.entity.ResponseVO;
 import com.wyu.infolib.entity.ReaderComments;
@@ -33,8 +34,8 @@ public class ReaderController {
     public ResponseVO readerList(ReaderAskPageVO readerAskPageVO){
         ResponseVO responseVO = new ResponseVO();
         try {
-            List<ReaderComments> list = readerService.getListPage(readerAskPageVO);
-            responseVO.setData(list);
+            PageVO vo = readerService.getListPageVO(readerAskPageVO);
+            responseVO.setData(vo);
             responseVO.setEmsg("获取成功");
         } catch (Exception e) {
             e.printStackTrace();

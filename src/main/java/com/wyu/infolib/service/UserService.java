@@ -24,7 +24,7 @@ public interface UserService {
     UserInfo findByIdCard(String idCard);
     //新增用户
     int save(UserInfo user);
-    //找到有账号的用户集合 1有，0无
+    //找到有账号的用户集合 1有，0无, 有账号的是管理员
     List<UserInfo> findListHasAccount(int flag, PageVO pageVO);
 
     PageVO findListHasAccountPage(int flag, PageVO pageVO);
