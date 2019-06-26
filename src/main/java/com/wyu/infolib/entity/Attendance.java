@@ -5,10 +5,13 @@ import java.util.Date;
 public class Attendance {
     private Integer id;
 
+    /** 考勤设备id **/
     private Integer attendanceDeviceId;
 
+    /** 考勤地点 **/
     private String attendancePlace;
 
+    /** 用户id **/
     private Integer userId;
 
     private String userName;

@@ -12,7 +12,7 @@ public class ReaderAskPageVO {
     private int pageNum = 1;
     //每页多少数据
     private int pageSize = 10;
-    //是否显示 ,1是显示，0是不显示,输入-2是读取全部
+    /** 是否显示 ,1是显示，0是不显示,输入-2是读取全部 **/
     private int isShow = -1;
     //是否回复
     private int isReply = -1;

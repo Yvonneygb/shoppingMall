@@ -34,6 +34,7 @@ public class ReaderController {
     public ResponseVO readerList(ReaderAskPageVO readerAskPageVO){
         ResponseVO responseVO = new ResponseVO();
         try {
+            readerAskPageVO.setIsShow(-2);
             PageVO vo = readerService.getListPageVO(readerAskPageVO);
             responseVO.setData(vo);
             responseVO.setEmsg("获取成功");

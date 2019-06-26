@@ -24,12 +24,13 @@ public class AdminLoginInterceptor implements HandlerInterceptor {
         // 得到对象
         Object admin = session.getAttribute("admin");
         // 判断对象是否存在
-        if(admin!=null){
-            return true;
-        }else{
-            httpServletResponse.sendRedirect("/errors");
-            httpServletRequest.setAttribute("msg","没有权限请先登陆");
-            return false;
-        }
+        return true;
+//        if(admin != null){
+//            return true;
+//        }else{
+//            httpServletResponse.sendRedirect("/errors");
+//            httpServletRequest.setAttribute("msg","没有权限请先登陆");
+//            return false;
+//        }
     }
 }
