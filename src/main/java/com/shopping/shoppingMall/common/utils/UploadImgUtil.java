@@ -40,13 +40,13 @@ public class UploadImgUtil {
                     responseVO.setData(type);
                 }else {
                     System.out.println("不是我们想要的文件类型,请按要求重新上传");
-                    responseVO.setEcode(1);
-                    responseVO.setEmsg("文件格式错误");
+//                    responseVO.setEcode(1);
+//                    responseVO.setEmsg("文件格式错误");
                 }
             }else {
                 System.out.println("文件类型为空");
-                responseVO.setEmsg("文件类型为空");
-                responseVO.setEcode(1);
+//                responseVO.setEmsg("文件类型为空");
+//                responseVO.setEcode(1);
             }
         }
         return responseVO;

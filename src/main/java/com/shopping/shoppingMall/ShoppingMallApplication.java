@@ -1,15 +1,14 @@
-package com.wyu.infolib;
-
+package com.shopping.shoppingMall;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-@MapperScan("com.wyu.infolib.dao")
-public class InfolibApplication {
+@MapperScan("com.shopping.shoppingMall.dao")
+public class ShoppingMallApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(InfolibApplication.class, args);
+        SpringApplication.run(ShoppingMallApplication.class, args);
     }
 
 }

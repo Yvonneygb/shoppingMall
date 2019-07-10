@@ -32,15 +32,15 @@ public class ResponseVO<T> {
         this.code = SUCCESS;
         this.data = data;
     }
-    public ResponseVO(String msg, int resCode) {
+    public ResponseVO(String msg, int resCode, T data) {
         this.msg = msg;
         this.code = resCode;
-        this.data = (T)"";
+        this.data = data;
     }
 
     //成功，有参
     public static <T> ResponseVO ok(T data){
-        return new ResponseVO<T>(data);
+        return new ResponseVO("获取成功" , SUCCESS , data);
     }
     //成功，无参
     public static <T> ResponseVO ok(){
@@ -63,19 +63,19 @@ public class ResponseVO<T> {
     }
     //失败，有参
     public static <T> ResponseVO error(String errorMsg){
-        return new ResponseVO(errorMsg,ERROR);
+        return new ResponseVO(errorMsg,ERROR,"");
     }
     //失败，无参
     public static <T> ResponseVO error(){
-        return new ResponseVO("操作失败",ERROR);
+        return new ResponseVO("操作失败",ERROR , "");
     }
     //警告，有参
     public static <T> ResponseVO warn(String warnMsg){
-        return new ResponseVO(warnMsg,WARN);
+        return new ResponseVO(warnMsg,WARN , "");
     }
     //警告，无参
     public static <T> ResponseVO warn(){
-        return new ResponseVO("操作可能会引起错误，请注意",WARN);
+        return new ResponseVO("操作可能会引起错误，请注意",WARN , "");
     }
 
     public String getMsg() {
