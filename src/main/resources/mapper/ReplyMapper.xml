@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wyu.infolib.dao.ReplyMapper" >
-  <resultMap id="BaseResultMap" type="com.wyu.infolib.entity.Reply" >
+<mapper namespace="com.shopping.shoppingMall.dao.ReplyMapper" >
+  <resultMap id="BaseResultMap" type="com.shopping.shoppingMall.entity.Reply" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="communication_id" property="communicationId" jdbcType="INTEGER" />
     <result column="reply_parent_id" property="replyParentId" jdbcType="INTEGER" />
@@ -27,7 +27,7 @@
     delete from reply
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.wyu.infolib.entity.Reply" >
+  <insert id="insert" parameterType="com.shopping.shoppingMall.entity.Reply" >
     insert into reply (id, communication_id, reply_parent_id, 
       reply_parent_name, user_id, user_name, 
       reply_time, is_show, reply_content
@@ -37,7 +37,7 @@
       #{replyTime,jdbcType=TIMESTAMP}, #{isShow,jdbcType=INTEGER}, #{replyContent,jdbcType=LONGVARCHAR}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.wyu.infolib.entity.Reply" >
+  <insert id="insertSelective" parameterType="com.shopping.shoppingMall.entity.Reply" >
     insert into reply
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -98,7 +98,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.wyu.infolib.entity.Reply" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.shopping.shoppingMall.entity.Reply" >
     update reply
     <set >
       <if test="communicationId != null" >
@@ -128,7 +128,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.wyu.infolib.entity.Reply" >
+  <update id="updateByPrimaryKey" parameterType="com.shopping.shoppingMall.entity.Reply" >
     update reply
     set communication_id = #{communicationId,jdbcType=INTEGER},
       reply_parent_id = #{replyParentId,jdbcType=INTEGER},

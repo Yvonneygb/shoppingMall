@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wyu.infolib.dao.CommunicationMapper" >
-  <resultMap id="BaseResultMap" type="com.wyu.infolib.entity.Communication" >
+<mapper namespace="com.shopping.shoppingMall.dao.CommunicationMapper" >
+  <resultMap id="BaseResultMap" type="com.shopping.shoppingMall.entity.Communication" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="content" property="content" jdbcType="VARCHAR" />
     <result column="img_urls" property="imgUrls" jdbcType="VARCHAR" />
@@ -27,7 +27,7 @@
     delete from communication
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.wyu.infolib.entity.Communication" >
+  <insert id="insert" parameterType="com.shopping.shoppingMall.entity.Communication" >
     insert into communication (id, content, img_urls, like_num,
       see_num, submit_user_id, nickname, 
       avatar_url, submit_time, is_show
@@ -38,7 +38,7 @@
       #{avatarUrl,jdbcType=VARCHAR}, #{msgSubmitTime,jdbcType=TIMESTAMP}, #{isShow,jdbcType=INTEGER}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.wyu.infolib.entity.Communication"
+  <insert id="insertSelective" parameterType="com.shopping.shoppingMall.entity.Communication"
           useGeneratedKeys="true" keyProperty="id" keyColumn="id">
     insert into communication
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -106,7 +106,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.wyu.infolib.entity.Communication" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.shopping.shoppingMall.entity.Communication" >
     update communication
     <set >
       <if test="content != null" >
@@ -139,7 +139,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.wyu.infolib.entity.Communication" >
+  <update id="updateByPrimaryKey" parameterType="com.shopping.shoppingMall.entity.Communication" >
     update communication
     set content = #{content,jdbcType=VARCHAR},
       img_urls = #{imgUrls,jdbcType=VARCHAR},

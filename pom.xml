@@ -8,11 +8,11 @@
         <version>2.1.3.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.wyu</groupId>
-    <artifactId>infolib</artifactId>
+    <groupId>com.shopping</groupId>
+    <artifactId>shoppingMall</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-    <name>infolib</name>
+    <name>shoppingMall</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>

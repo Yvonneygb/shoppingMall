@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wyu.infolib.dao.UserInfoMapper" >
-  <resultMap id="BaseResultMap" type="com.wyu.infolib.entity.UserInfo" >
+<mapper namespace="com.shopping.shoppingMall.dao.UserInfoMapper" >
+  <resultMap id="BaseResultMap" type="com.shopping.shoppingMall.entity.UserInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="nickname" property="nickname" jdbcType="VARCHAR" />
     <result column="avatar_url" property="avatarUrl" jdbcType="VARCHAR" />
@@ -19,7 +19,7 @@
     <result column="reg_time" property="regTime" jdbcType="TIMESTAMP" />
     <result column="openid" property="openid" jdbcType="VARCHAR" />
   </resultMap>
-  <resultMap id="SomeResultMap" type="com.wyu.infolib.entity.UserInfo" >
+  <resultMap id="SomeResultMap" type="com.shopping.shoppingMall.entity.UserInfo" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="nickname" property="nickname" jdbcType="VARCHAR" />
     <result column="avatar_url" property="avatarUrl" jdbcType="VARCHAR" />
@@ -47,7 +47,7 @@
     delete from user_info
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.wyu.infolib.entity.UserInfo" >
+  <insert id="insert" parameterType="com.shopping.shoppingMall.entity.UserInfo" >
     insert into user_info (id, nickname, avatar_url, 
       user_account, user_password, user_name, 
       sex, user_college, user_id_card, 
@@ -61,7 +61,7 @@
       #{authentication,jdbcType=INTEGER}, #{loginTime,jdbcType=TIMESTAMP}, #{regTime,jdbcType=TIMESTAMP}, 
       #{openid,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.wyu.infolib.entity.UserInfo" >
+  <insert id="insertSelective" parameterType="com.shopping.shoppingMall.entity.UserInfo" >
     insert into user_info
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -164,7 +164,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.wyu.infolib.entity.UserInfo" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.shopping.shoppingMall.entity.UserInfo" >
     update user_info
     <set >
       <if test="nickname != null" >
@@ -215,7 +215,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.wyu.infolib.entity.UserInfo" >
+  <update id="updateByPrimaryKey" parameterType="com.shopping.shoppingMall.entity.UserInfo" >
     update user_info
     set nickname = #{nickname,jdbcType=VARCHAR},
       avatar_url = #{avatarUrl,jdbcType=VARCHAR},

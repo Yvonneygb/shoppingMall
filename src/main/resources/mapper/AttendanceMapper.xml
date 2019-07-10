@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wyu.infolib.dao.AttendanceMapper" >
-  <resultMap id="BaseResultMap" type="com.wyu.infolib.entity.Attendance" >
+<mapper namespace="com.shopping.shoppingMall.dao.AttendanceMapper" >
+  <resultMap id="BaseResultMap" type="com.shopping.shoppingMall.entity.Attendance" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="attendance_device_id" property="attendanceDeviceId" jdbcType="INTEGER" />
     <result column="attendance_place" property="attendancePlace" jdbcType="VARCHAR" />
@@ -23,7 +23,7 @@
     delete from attendance
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.wyu.infolib.entity.Attendance" >
+  <insert id="insert" parameterType="com.shopping.shoppingMall.entity.Attendance" >
     insert into attendance (id, attendance_device_id, attendance_place, 
       user_id, user_name, user_id_card, 
       attendance_time)
@@ -31,7 +31,7 @@
       #{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{userIdCard,jdbcType=VARCHAR}, 
       #{attendanceTime,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.wyu.infolib.entity.Attendance" >
+  <insert id="insertSelective" parameterType="com.shopping.shoppingMall.entity.Attendance" >
     insert into attendance
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.wyu.infolib.entity.Attendance" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.shopping.shoppingMall.entity.Attendance" >
     update attendance
     <set >
       <if test="attendanceDeviceId != null" >
@@ -104,7 +104,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.wyu.infolib.entity.Attendance" >
+  <update id="updateByPrimaryKey" parameterType="com.shopping.shoppingMall.entity.Attendance" >
     update attendance
     set attendance_device_id = #{attendanceDeviceId,jdbcType=INTEGER},
       attendance_place = #{attendancePlace,jdbcType=VARCHAR},

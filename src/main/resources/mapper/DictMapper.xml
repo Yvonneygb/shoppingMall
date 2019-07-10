@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.wyu.infolib.dao.DictMapper" >
-  <resultMap id="BaseResultMap" type="com.wyu.infolib.entity.Dict" >
+<mapper namespace="com.shopping.shoppingMall.dao.DictMapper" >
+  <resultMap id="BaseResultMap" type="com.shopping.shoppingMall.entity.Dict" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="dict_code" property="dictCode" jdbcType="VARCHAR" />
     <result column="dict_value" property="dictValue" jdbcType="VARCHAR" />
@@ -21,13 +21,13 @@
     delete from dict
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <insert id="insert" parameterType="com.wyu.infolib.entity.Dict" >
+  <insert id="insert" parameterType="com.shopping.shoppingMall.entity.Dict" >
     insert into dict (id, dict_code, dict_value, 
       field_name, table_name)
     values (#{id,jdbcType=INTEGER}, #{dictCode,jdbcType=VARCHAR}, #{dictValue,jdbcType=VARCHAR}, 
       #{fieldName,jdbcType=VARCHAR}, #{tableName,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.wyu.infolib.entity.Dict" >
+  <insert id="insertSelective" parameterType="com.shopping.shoppingMall.entity.Dict" >
     insert into dict
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -64,7 +64,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.wyu.infolib.entity.Dict" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.shopping.shoppingMall.entity.Dict" >
     update dict
     <set >
       <if test="dictCode != null" >
@@ -82,7 +82,7 @@
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.wyu.infolib.entity.Dict" >
+  <update id="updateByPrimaryKey" parameterType="com.shopping.shoppingMall.entity.Dict" >
     update dict
     set dict_code = #{dictCode,jdbcType=VARCHAR},
       dict_value = #{dictValue,jdbcType=VARCHAR},
